@@ -8,7 +8,7 @@ from modules.configure_llm import config_llm
 
 
 llm=config_llm()
-print(llm.invoke("HI"))
+
 
 
 # def create_wiki_chain():
