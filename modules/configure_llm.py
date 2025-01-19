@@ -1,10 +1,14 @@
 from config.config import load_environment_variables
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_groq import ChatGroq
 import google.generativeai as genai
 import os
 
 def config_llm():
-    genai.configure(api_key=os.getenv('GOOGLE_API_KEY'))
-    llM=ChatGoogleGenerativeAI(model="gemini-1.5-pro",temperature=0.7,
-        convert_system_message_to_human=True)
-    return llM
+    api_key = os.getenv('GROQ_API_KEY')
+
+    llm = ChatGroq(
+        groq_api_key=api_key,
+        model_name="mixtral-8x7b-32768",  # You can also use "llama2-70b-4096"
+        temperature=0.7,
+    )
+    return llm
