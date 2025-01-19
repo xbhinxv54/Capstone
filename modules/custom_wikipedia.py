@@ -1,10 +1,10 @@
 from langchain_community.tools.wikipedia.tool import WikipediaQueryRun
 from langchain_community.utilities import WikipediaAPIWrapper
 import random
-from langchain.prompts import PromptTemplate,MessagesPlaceholder
+from langchain.prompts import PromptTemplate,MessagesPlaceholder,ChatPromptTemplate
 from langchain.memory import ConversationBufferWindowMemory
 from modules.configure_llm import config_llm
-from langchain_core.output_parsers import CommaSeparatedListOutputParser
+from langchain_core.output_parsers import CommaSeparatedListOutputParser,StrOutputParser
 
 
 class CustomWikipediaQueryRun(WikipediaQueryRun):
@@ -22,8 +22,7 @@ def get_wikipedia_query_tool(top_k_results:int=1):
     return wiki_tool
 
 
-def create_wiki_chain():
-    llm=config_llm()
+def create_wiki_chain(llm):
     wiki=get_wikipedia_query_tool(top_k_results=1)
     memory=ConversationBufferWindowMemory(
         return_messages=True,
@@ -41,3 +40,8 @@ def create_wiki_chain():
     extract_chain=extract_topic_template|llm|output_parser
 
     return extract_chain,memory
+
+
+
+
+    
