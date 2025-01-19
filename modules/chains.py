@@ -41,7 +41,7 @@ def chat_chain(llm):
     chat_prompt = ChatPromptTemplate.from_messages([
         ("system", """You are a helpful AI assistant engaging in a conversation about a topic. 
         Use the Wikipedia information provided as context for your responses, but also draw on your general knowledge.
-        Keep your responses conversational and engaging."""),
+        Keep your responses conversational and engaging. Dont include any confidence percentage or anything like that"""),
         MessagesPlaceholder(variable_name="chat_history"),
         ("human", """Context from Wikipedia: {wiki_data}
         
@@ -52,6 +52,8 @@ def chat_chain(llm):
     return chat_chain,memory
 
 def run_chat(llm):
+    """For command line interface only"""
+    
     extract_chain,wiki=create_wiki_chain(llm)
     chats_chain,memory=chat_chain(llm)
 

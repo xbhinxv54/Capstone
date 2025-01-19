@@ -1,0 +1,42 @@
+div.stChatMessage {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+div.stChatMessage[data-messagetype="user"] {
+    background-color: #e6f3ff;
+}
+
+div.stChatMessage[data-messagetype="assistant"] {
+    background-color: #f0f2f6;
+}
+
+.stChatInputContainer {
+    padding-top: 1rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Style for the context display */
+.sidebar .stMarkdown {
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Style for the show/hide context buttons */
+.sidebar button {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Style for the expander */
+.sidebar .streamlit-expanderHeader {
+    background-color: transparent;
+    border: none;
+    padding: 0.5rem 0;
+}
+
+.sidebar .streamlit-expanderContent {
+    border: none;
+    padding: 0.5rem 0;
+}
