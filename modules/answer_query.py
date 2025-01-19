@@ -11,17 +11,17 @@ llm=config_llm()
 
 
 
-# def create_wiki_chain():
-#     wiki=get_wikipedia_query_tool(1)
-#     template="""
-#         Based on the following Wikipedia information, please answer the question.
+def create_wiki_chain():
+    wiki=get_wikipedia_query_tool(1)
+    template="""
+        Based on the following Wikipedia information, please answer the question.
             
-#             Wikipedia Information: {wiki_data}
+            Wikipedia Information: {wiki_data}
             
-#             Question: {question}
+            Question: {question}
             
-#             Answer: """
-#     prompt=PromptTemplate(input_variables=["wiki_data","question"],template=template)
+            Answer: """
+    prompt=PromptTemplate(input_variables=["wiki_data","question"],template=template)
 
 #     chain=LLMChain(prompt=prompt,llm=llm)
 #     return wiki,chain

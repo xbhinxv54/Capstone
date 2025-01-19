@@ -1,17 +1,15 @@
 from config.config import load_environment_variables
 from modules.custom_wikipedia import get_wikipedia_query_tool
 from langchain_google_genai import ChatGoogleGenerativeAI
+from modules.custom_wikipedia import create_wiki_chain
 
-def main():
+def main(question):
     env_vars=load_environment_variables()
     GEMINI_API_KEY=env_vars["GEMINI_API_KEY"]
 
 
-    llm=ChatGoogleGenerativeAI(model="gemini-1.5-pro")
-
-    wiki=get_wikipedia_query_tool(top_k_results=1)
-    query = "Albert Einstein"
-    result=wiki.run(query)
+    chain,memory=create_wiki_chain()
+    result=chain.invoke({"question":question})
     print(result)
 if __name__ == "__main__":
-    main()
+    main("Tell me about vellore institute of Technology")
