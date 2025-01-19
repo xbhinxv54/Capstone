@@ -11,7 +11,7 @@ from langchain_core.output_parsers import CommaSeparatedListOutputParser,StrOutp
 
 
 
-llm=config_llm()
+
 
 
 
